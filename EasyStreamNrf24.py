@@ -8,7 +8,8 @@
 # Date Created:  June 12th, 2021 (after testing for a few weeks)
 # Last Modified: June 12th, 2021
 
-import collections, time # circuitpython built-ins
+import os, sys, collections, time # circuitpython built-ins
+sys.path.append(os.path.join(os.path.dirname(__file__), ".")) # make sure this folder is in the path
 from crc import crc
 
 _specialFirstBinChars = b'c0ffee'
