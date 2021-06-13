@@ -180,7 +180,7 @@ def receivePayload(nrfRef, timeoutDur=0.1, updateDur=0.1, debugPrint=False):
     # Return payload
     return totalPayload
 
-def sendPayload(nrfRef, payload, debugPrint=False):
+def sendPayload(nrfRef, payload, debugPrint=False, numRetries=10):
     # Configure the module to transmit
     nrfRef.power = True
     nrfRef.listen = False
@@ -190,7 +190,6 @@ def sendPayload(nrfRef, payload, debugPrint=False):
     if debugPrint == True:
         print(f'Attempting to transmit payload \'{payload}\'')
         print(packedPayload)
-    numRetries = 12;
     gotAckBack = nrfRef.send(packedPayload, force_retry=numRetries)
     
     # Check whether the send was 'successful' (got an ack back)
