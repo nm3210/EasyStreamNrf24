@@ -9,7 +9,11 @@
 # Last Modified: June 12th, 2021
 
 import os, sys, collections, time # circuitpython built-ins
-sys.path.append(os.path.join(os.path.dirname(__file__), ".")) # make sure this folder is in the path
+try:
+    cwd = os.path.dirname(os.path.realpath(__file__))
+except:
+    cwd = ("/" + __file__).rsplit("/", 1)[0]
+sys.path.append(cwd) # make sure this folder is in the path
 from crc import crc
 
 _specialFirstBinChars = b'c0ffee'
